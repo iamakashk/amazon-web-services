@@ -275,6 +275,8 @@ VPC (Region B)
 
 ---
 
+<img width="1132" height="776" alt="image" src="https://github.com/user-attachments/assets/7c673e5d-17a8-46d6-b8e0-0c23572d7144" />
+
 ## When to Use What
 
 | Scenario | Recommended Solution |
