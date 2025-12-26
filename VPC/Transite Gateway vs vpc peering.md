@@ -169,4 +169,139 @@ If the question mentions:
 - **Few VPCs**
 → Answer is **VPC Peering**
 
+# AWS Transit Gateway – Regional vs Cross-Region Connectivity
+
+## Direct Answer
+
+**AWS Transit Gateway (TGW) is a regional service.**
+
+- A Transit Gateway is created **inside a single AWS Region**
+- It can attach **only to resources within the same region**
+- A single Transit Gateway **cannot directly connect VPCs across regions**
+
+---
+
+## Why Transit Gateway Is Regional
+
+AWS Regions are designed to be **failure-isolated units**.
+
+Keeping Transit Gateway regional provides:
+- Low and predictable latency
+- Strong fault isolation
+- Independent scaling per region
+- Clear operational and cost boundaries
+
+A global Transit Gateway would break AWS’s regional isolation model.
+
+---
+
+## What Does NOT Work (Common Misconception)
+
+❌ You **cannot** do this:
+
+
+VPC (Mumbai) ───► Transit Gateway (Singapore)
+
+
+Direct cross-region attachment is **not supported**.
+
+---
+
+## How Cross-Region Connectivity Actually Works
+
+AWS supports **Inter-Region Transit Gateway Peering**.
+
+This requires:
+- One Transit Gateway **per region**
+- A peering connection **between the two Transit Gateways**
+
+---
+
+## Inter-Region Transit Gateway Peering (Correct Design)
+
+VPC (Region A)
+
+│
+
+▼
+
+Transit Gateway A
+
+│
+
+▼ (AWS Global Backbone)
+
+Transit Gateway B
+
+│
+
+▼
+
+VPC (Region B)
+
+
+
+### Key Points
+- Each region has its **own Transit Gateway**
+- Transit Gateways are **peered together**
+- Traffic flows over AWS’s private backbone
+- Communication is encrypted and managed by AWS
+
+---
+
+## What You Can and Cannot Do
+
+### ✅ Supported
+- Connect VPCs across regions using **TGW Peering**
+- Build multi-region hub-and-spoke architectures
+- Use AWS backbone instead of public internet
+- Integrate on-premises networks across regions
+
+### ❌ Not Supported
+- Single global Transit Gateway
+- Direct cross-region VPC attachment
+- Avoiding multiple TGWs in multi-region setups
+
+---
+
+## Cost and Latency Considerations
+
+- Inter-region data transfer **is chargeable**
+- Latency depends on **physical distance between regions**
+- TGW peering is still cleaner than:
+  - Large VPC peering meshes
+  - VPN chaining
+  - Custom routing appliances
+
+---
+
+## When to Use What
+
+| Scenario | Recommended Solution |
+|--------|----------------------|
+Single region, many VPCs | One Transit Gateway |
+Multi-region architecture | TGW per region + TGW Peering |
+Few VPCs, simple routing | VPC Peering |
+Hybrid (On-prem + AWS) | TGW + Direct Connect |
+Hybrid + Multi-Region | TGW per region + DX + TGW Peering |
+
+---
+
+## One-Line Summary
+
+> **AWS Transit Gateway is regional.  
+> Cross-region connectivity is achieved using Transit Gateway peering, not direct attachment.**
+
+---
+
+## Exam / Interview Ready Statement
+
+> “AWS Transit Gateway is a regional service.  
+> To connect VPCs across regions, AWS requires Transit Gateway peering between regional Transit Gateways.”
+
+---
+
+## End
+
+
 ---
