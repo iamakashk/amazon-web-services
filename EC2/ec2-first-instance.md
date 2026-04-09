@@ -214,3 +214,35 @@ Running
 
 
 ---
+
+<img width="2802" height="1458" alt="image" src="https://github.com/user-attachments/assets/c802706e-01f2-46d5-bc5b-69fef3759fcf" />
+
+<img width="2796" height="1458" alt="image" src="https://github.com/user-attachments/assets/4a054654-8da4-489f-9709-f860dc2137a7" />
+
+---
+
+## Step 10: Connect to EC2
+
+Select instance which you want to connect to 
+
+Click:
+
+Connect
+
+<img width="2810" height="1456" alt="image" src="https://github.com/user-attachments/assets/77c79611-d7ae-44f6-a8aa-2449a8c2f1ff" />
+
+
+Choose:
+
+EC2 Instance Connect
+
+Click:
+
+Connect
+<img width="2954" height="1434" alt="image" src="https://github.com/user-attachments/assets/ea86cb68-5e9b-4735-8fd3-796da4c3e130" />
+
+
+You will see terminal.
+
+<img width="2834" height="1448" alt="image" src="https://github.com/user-attachments/assets/148a78b5-98ed-4d85-b153-9a09598d54f3" />
+
